@@ -1,0 +1,171 @@
+:root {
+    --global-color: #379BFF;
+    --cart-color: #F91155;
+    --link-hover: #0562BF;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 10px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.6rem;
+}
+
+.wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    padding: 10px;
+}
+
+h1 {
+    font-size: 2rem;
+    color: var(--global-color);
+}
+
+.cart {
+    background-image: url("./asset/svg/cart.png");
+    background-repeat: no-repeat;
+    background-size: 48px 60px;
+    height: 60px;
+    width: 60px;
+    position: relative;
+
+}
+
+.cart__number {
+    background-color: var(--cart-color);
+    border-radius: 10px;
+    padding: 4px;
+    color: white;
+    position: absolute;
+    top: 15px;
+    left: 30px;
+}
+
+/**/
+.button {
+    background-color: var(--global-color);
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 5px;
+    border: 1px solid var(--global-color);
+    border-radius: 20px;
+    height: 30px;
+    width: 80px;
+}
+
+.button:hover {
+    background-color: var(--link-hover);
+}
+
+h3 {
+    color: var(--global-color);
+    font-size: 1.5rem;
+    margin: 5px 0;
+}
+
+.signature {
+    margin: 5px 0;
+}
+
+
+.filters {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border: 1px solid var(--global-color);
+    border-radius: 20px;
+}
+
+.filters__group {
+    display: flex;
+    flex-direction: column;
+    width: 32%;
+}
+
+.slider-value {
+    background-color: white;
+    border: 1px solid var(--global-color);
+    border-radius: 20px;
+    padding: 3px;
+    width: 50px;
+    text-align: center;
+    outline: none;
+    display: inline-block;
+
+}
+
+.slider {
+    display: inline-block;
+    min-width: 200px;
+    margin: 10px;
+}
+
+.sorting {
+    outline: none;
+    margin-bottom: 5px;
+}
+
+#site-search {
+    padding: 5px;
+    border: 1px solid var(--global-color);
+    border-radius: 20px;
+    outline: none;
+    margin-bottom: 5px;
+}
+
+#site-search:hover,
+#site-search:focus,
+#site-search:active {
+    border: 2px solid var(--link-hover);
+
+}
+
+/**/
+.note {
+    font-size: 1rem;
+}
+
+/**/
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.git-link {
+    color: var(--global-color);
+    font-size: 1rem;
+}
+
+.git-link:hover {
+    color: var(--link-hover);
+}
+
+.rss-logo {
+    height: 26px;
+    width: 60px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.rss-logo:hover {
+    transform: scale(1.1);
+}

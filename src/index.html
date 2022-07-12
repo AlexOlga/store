@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online-store</title>
+</head>
+<body class="wrapper">  
+  <header class="header">
+    <h1>Турагенство космических путешествий </h1>
+    <div class="cart"> 
+      <span class="cart__number ">99</span>     
+    </div>    
+  </header>
+  <div>
+    <form class="filters">
+      <div class="filters__group">
+        <h3>Фильтры по значению</h3>      
+        
+          <p class="signature">Посещаемые объекты:</p>    
+          <div>
+            <input type="checkbox" name="mercury" value="mercury">
+            <label for="mercury">Меркурий</label>
+          </div>
+          <div>
+            <input type="checkbox" name="venus" value="venus">
+            <label for="venus">Венера</label>
+          </div>
+          <div>
+            <input type="checkbox" name="moon" value="moon">
+            <label for="moon">Луна</label>
+          </div>
+          <div>
+            <input type="checkbox" name="mars" value="mars">
+            <label for="mars">Марс</label>
+          </div>
+          <div>
+            <input type="checkbox" name="jupiter" value="jupiter">
+            <label for="jupiter">Юпитер</label>
+          </div>
+          <div>
+            <input type="checkbox" name="saturn" value="saturn">
+            <label for="saturn">Сатурн</label>
+          </div>
+          <div>
+            <input type="checkbox" name="europa" value="europa">
+            <label for="europa">Европа</label>
+          </div>
+          <div>
+            <input type="checkbox" name="ganymede" value="ganymede">
+            <label for="ganymede">Ганимед</label>
+          </div>
+          <div>
+            <input type="checkbox" name="titan" value="titan">
+            <label for="titan">Титан</label>
+          </div>
+          <div>
+            <input type="checkbox" name="mercury" value="enceladus">
+            <label for="enceladus">Энцелад</label>
+          </div>
+          <div>
+            <input type="checkbox" name="neptune" value="neptune">
+            <label for="neptune">Нептун</label>
+          </div>
+          <div>
+            <input type="checkbox" name="pluto" value="pluto">
+            <label for="pluto">Плутон</label>
+          </div>
+          <div>
+            <input type="checkbox" name="charon" value="charon">
+            <label for="charon">Харон</label>
+          </div>
+          <div>
+            <input type="checkbox" name="Many asteroids" value="Many asteroids">
+            <label for="Many asteroids">Множество астероидов</label>
+          </div>        
+          
+      </div>
+      <div class="filters__group">
+        <h3>Фильтры по диапазону</h3>        
+        <p class="signature">Длительность тура:</p>
+        <div >
+          <input type="text" id="slider-time-value-lower" class="slider-value" readonly="readonly" value="10"> 
+          <div id="slider-time" class="slider"></div>           
+          <input type="text" id="slider-time-value-upper" class="slider-value" readonly="readonly" value="677">
+        </div>        
+        
+        <div>
+          <p class="signature">Дальность путешествия в a.e.:</p>
+          <div>
+            <input type="text" id="slider-range-value-lower" class="slider-value" readonly="readonly" value="2"> 
+            <div id="slider-range" class="slider"></div>
+            <input type="text" id="slider-range-value-upper" class="slider-value" readonly="readonly" value="177">
+          </div>          
+        </div>        
+      </div>
+      <div class="filters__group">
+        <label class="signature" for="site-search">Поиск:</label>
+          <input placeholder="Введите текст" type="search" name="search" id="site-search" autocomplete="off" autofocus="autofocus">
+        <p class="signature">Сортировка:</p>
+          <select name="sorting"  size="1" class="sorting">
+            <option selected value="s1">По названию, от А до Я</option>
+            <option value="s2">По названию, от Я до А</option>
+            <option value="s3">По цене, сначала дорогие</option>
+            <option value="s4">По цене, сначала дешевые</option>
+          </select>
+          <input type="reset" class="button reset">
+      </div>
+    </form>
+  
+  </div>
+  <div class="products"></div>
+  <p class="note">* Время и стоимость путёвки зависят от расположения планет и может меняться в зависимости от времени заезда! Пожалуйста уточните конкретные значения с вашим персональным менеджером.</p>
+  <footer class="footer">            
+    <p >
+        <a class="git-link" href="https://github.com/AlexOlga">GitHub</a>
+    </p>
+    <p class="rss-link">
+        <a href="https://rs.school/js/">
+           <img src="./asset/svg/rs_school.svg" class="rss-logo" alt="rss-logo"></img>
+        </a>
+    </p> 
+  </footer>
+  <script src="./index.ts"></script>
+</body>
+</html>
