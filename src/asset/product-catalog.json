@@ -2,7 +2,7 @@
     {
         "id": 0,
         "name": "Огненный пояс",
-        "urlToImage": "./img/0.webp",
+        "urlToImage": "./asset/img/0.webp",
         "time": 11,
         "placeVizit": [
             "Меркурий",
@@ -15,7 +15,7 @@
     {
         "id": 1,
         "name": "По следам первых",
-        "urlToImage": "./img/1.webp",
+        "urlToImage": "./asset/img/1.webp",
         "time": 21,
         "placeVizit": [
             "Луна",
@@ -28,7 +28,7 @@
     {
         "id": 2,
         "name": "Почувствуй себя Кассини",
-        "urlToImage": "./img/2.webp",
+        "urlToImage": "./asset/img/2.webp",
         "time": 160,
         "placeVizit": [
             "Венера",
