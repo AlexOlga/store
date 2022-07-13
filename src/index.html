@@ -100,7 +100,8 @@
           <input placeholder="Введите текст" type="search" name="search" id="site-search" autocomplete="off" autofocus="autofocus">
         <p class="signature">Сортировка:</p>
           <select name="sorting"  size="1" class="sorting">
-            <option selected value="s1">По названию, от А до Я</option>
+            <option selected value="s0"></option>
+            <option value="s1">По названию, от А до Я</option>
             <option value="s2">По названию, от Я до А</option>
             <option value="s3">По цене, сначала дорогие</option>
             <option value="s4">По цене, сначала дешевые</option>
@@ -110,7 +111,9 @@
     </form>
   
   </div>
-  <div class="products"></div>
+  <div class="products">
+   
+  </div>
   <p class="note">* Время и стоимость путёвки зависят от расположения планет и может меняться в зависимости от времени заезда! Пожалуйста уточните конкретные значения с вашим персональным менеджером.</p>
   <footer class="footer">            
     <p >
@@ -122,6 +125,24 @@
         </a>
     </p> 
   </footer>
+  <template id="productItemTemp">
+    <div class="product-item">
+      <img class="product__img" src="./asset/img/0.webp">
+      <div class="product-content">
+        <h4 class="product__name" >Огненный пояс</h4>
+        <p class="product__text product__description" > Пролёт по баллистическим траекториям</p>
+        <p class="product__text"> Дальность путешествия: <span class="product__range" >1.8 a.e. </span></p>
+        <p class="product__text">Длительность тура: <span class="product__time" >11 суток</span></p>
+        <p class="product__text">Посещаемые объекты: <span class="product__placeVizit" >"Меркурий", "Венера"</span></p>
+        <p class="product__text"> Цена: <span class="product__price"> 10690 у.е.</span></p>       
+      </div>
+      <div class= "product__button">
+        <button class=" button">
+          <span class="button__text">В корзину</span>
+        </button>
+      </div>     
+    </div>
+</template>
   <script src="./index.ts"></script>
 </body>
 </html>
