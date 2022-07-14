@@ -1,6 +1,6 @@
 type GenericCallback<T> = (data?: T) => void;
 import { arrayProducts } from './type'
-export class Loader {
+export class Model {
     baseLink: string;
     constructor(baseLink: string) {
         this.baseLink = baseLink;
