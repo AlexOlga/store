@@ -68,6 +68,7 @@ h1 {
     border-radius: 10px;
     height: 30px;
     width: 80px;
+    cursor: pointer;
     transition: 0.3s;
 }
 
@@ -97,8 +98,36 @@ h3 {
 .filters__group {
     display: flex;
     flex-direction: column;
-    width: 32%;
+    width: 30%;
+    padding: 5px;
 }
+
+.filters__group_big {
+    width: 40%;
+}
+
+select,
+input {
+    cursor: pointer;
+}
+
+label {
+    padding: 5px;
+}
+
+.object-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.favorit-body::before {
+    display: block;
+    width: 90%;
+    content: '';
+    border-bottom: 1px solid var(--global-color);
+    margin: 10px 0;
+}
+
 
 .slider-value {
     background-color: white;
@@ -170,6 +199,14 @@ h3 {
 .product-content {
     padding: 10px;
     flex-grow: 1;
+}
+
+.product-item {
+    transition: 0.3s;
+}
+
+.product-item:hover {
+    transform: scale(1.1);
 }
 
 .product__text {

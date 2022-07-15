@@ -1,12 +1,12 @@
 import { Products } from "./view";
 import { Model } from "./model";
-//import { arrayProducts} from "./type"
+
 export class Controller {
     model: Model;
     view: Products;
-    productInCart: object;
+    productInCart: string;
     typeSorting: string;
-    constructor(baseLink: string, maxProductsInCart: number, productInCart: object = {}, typeSorting = "0") {
+    constructor(baseLink: string, maxProductsInCart: number, productInCart = "", typeSorting = "0") {
         this.model = new Model(baseLink, maxProductsInCart);
         this.view = new Products();
         this.productInCart = productInCart;
@@ -28,16 +28,17 @@ export class Controller {
                 if (this.model.isFullCart(cartNumber)) { alert("Извините, все слоты заполнены") }
                 else {
                     this.view.addProductInCart(elm)
+                    this.productInCart = this.productInCart + '$' + `${elm.dataset.id}`
                     /*  const poductId: string=  JSON.stringify(elm.dataset.id);
-                      this.productInCart[poductId]=1
-                      //if (elm.dataset.id !==undefined){ this.productInCart[elm.dataset.id]=1 } 
-                      // if (idProduct !==undefined){ this.productInCart[idProduct]=1 } */
+                     this.productInCart[poductId]=1
+                     //if (elm.dataset.id !==undefined){ this.productInCart[elm.dataset.id]=1 } 
+                     // if (idProduct !==undefined){ this.productInCart[idProduct]=1 } */
                     cartNumber++
                 }
             }
             else {
                 this.view.removeProductInCart(elm)
-                //  delete this.productInCart[elm.dataset.id]
+                this.productInCart = this.productInCart.replace('$' + `${elm.dataset.id}`, '');
                 cartNumber--
             }
             cart.textContent = `${cartNumber}`
