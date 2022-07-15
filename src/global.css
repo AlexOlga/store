@@ -195,7 +195,7 @@ h3 {
     font-weight: 400;
 }
 
-.product__button {
+.product__button-contener {
     display: flex;
     justify-content: center;
     align-items: center;
