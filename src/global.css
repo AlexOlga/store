@@ -194,6 +194,7 @@ label {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    transition: 0.3s;
 }
 
 .product-content {
@@ -201,12 +202,8 @@ label {
     flex-grow: 1;
 }
 
-.product-item {
-    transition: 0.3s;
-}
-
 .product-item:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 .product__text {

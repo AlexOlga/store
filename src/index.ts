@@ -10,7 +10,7 @@ const app = new Controller(baseLink, maxProductsInCart);
 
 app.start();
 const productsBlok = document.querySelector('.products') ? document.querySelector('.products') : console.log('блок не найден');
-productsBlok?.addEventListener('click', (e: Event) => app.changeStatusProduct(e));
+productsBlok?.addEventListener('click', (e: Event) => app.handleProduct(e));
 
 
 const sortingStatus = <HTMLSelectElement>document.querySelector(".sorting");

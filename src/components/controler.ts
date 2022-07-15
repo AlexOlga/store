@@ -4,13 +4,10 @@ import { Model } from "./model";
 export class Controller {
     model: Model;
     view: Products;
-    productInCart: string;
-    typeSorting: string;
-    constructor(baseLink: string, maxProductsInCart: number, productInCart = "", typeSorting = "0") {
+
+    constructor(baseLink: string, maxProductsInCart: number) {
         this.model = new Model(baseLink, maxProductsInCart);
         this.view = new Products();
-        this.productInCart = productInCart;
-        this.typeSorting = typeSorting;
 
     }
     start() {
@@ -18,35 +15,13 @@ export class Controller {
             if (data !== undefined) this.view.draw(data);
         })
     }
-
-    changeStatusProduct(e: Event) {
+    handleProduct(e: Event) {
         const elm = e.target as HTMLElement;
-        if (elm.classList.contains("product__button")) {
-            const cart = (document.querySelector('.cart__number') as HTMLElement)
-            let cartNumber = cart.textContent ? +cart.textContent : 0;
-            if (elm.dataset.add === "false") {
-                if (this.model.isFullCart(cartNumber)) { alert("Извините, все слоты заполнены") }
-                else {
-                    this.view.addProductInCart(elm)
-                    this.productInCart = this.productInCart + '$' + `${elm.dataset.id}`
-                    /*  const poductId: string=  JSON.stringify(elm.dataset.id);
-                     this.productInCart[poductId]=1
-                     //if (elm.dataset.id !==undefined){ this.productInCart[elm.dataset.id]=1 } 
-                     // if (idProduct !==undefined){ this.productInCart[idProduct]=1 } */
-                    cartNumber++
-                }
-            }
-            else {
-                this.view.removeProductInCart(elm)
-                this.productInCart = this.productInCart.replace('$' + `${elm.dataset.id}`, '');
-                cartNumber--
-            }
-            cart.textContent = `${cartNumber}`
-        }
+        if (elm.classList.contains("product__button")) this.model.changeStatusProduct(elm);
     }
+
     handleSorting() {
         const sortingStatus = <HTMLSelectElement>document.querySelector(".sorting");
-        this.typeSorting = sortingStatus.value;
         this.model.sorting(sortingStatus.value)
     }
 

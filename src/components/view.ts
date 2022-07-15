@@ -19,12 +19,4 @@ export class Products {
         (document.querySelector('.products') as HTMLElement).innerHTML = '';
         (document.querySelector('.products') as HTMLElement).appendChild(fragment);
     }
-    addProductInCart(elm: HTMLElement) {
-        elm.dataset.add = "true"
-        elm.textContent = "Передумать"
-    }
-    removeProductInCart(elm: HTMLElement) {
-        elm.dataset.add = "false"
-        elm.textContent = "В корзину"
-    }
 }
