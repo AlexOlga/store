@@ -2,14 +2,16 @@
 import * as noUiSlider from 'nouislider';
 import 'nouislider/dist/nouislider.css';
 import './slider.css';
+export const maxTime = 677;
+export const minTime = 11;
 const sliderTime = document.getElementById('slider-time') as noUiSlider.target;
 noUiSlider.create(sliderTime, {
-    start: [10, 677],
+    start: [11, 677],
     tooltips: true,
     connect: true,
     step: 1,
     range: {
-        'min': 10,
+        'min': 11,
         'max': 677
     },
     format: {
@@ -22,6 +24,7 @@ noUiSlider.create(sliderTime, {
     }
 
 });
+/*
 const timeValues: Array<HTMLInputElement> = [
     <HTMLInputElement>document.getElementById('slider-time-value-lower'),
     <HTMLInputElement>document.getElementById('slider-time-value-upper')
@@ -32,7 +35,9 @@ if (sliderTime.noUiSlider !== undefined) {
         timeValues[handle].value = `${values[handle]}`;
     });
 }
-sliderTime.addEventListener('change', () => { console.log(sliderTime.getAnimations()) })
+*/
+//sliderTime.addEventListener('change', () => { console.log(sliderTime.getAnimations()) })
+
 const slideRange = document.getElementById('slider-range') as noUiSlider.target;
 noUiSlider.create(slideRange, {
     start: [2, 117],

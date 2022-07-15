@@ -4,13 +4,13 @@ export class Model {
     baseLink: string;
     maxProductsInCart: number;
     productInCart: string;
-    typeSorting: string;
+    //typeSorting: string;
 
-    constructor(baseLink: string, maxProductsInCart: number, productInCart = "", typeSorting = "0") {
+    constructor(baseLink: string, maxProductsInCart: number, productInCart = "") {
         this.baseLink = baseLink;
         this.maxProductsInCart = maxProductsInCart;
         this.productInCart = productInCart;
-        this.typeSorting = typeSorting;
+        // this.typeSorting = typeSorting;
     }
     load(callback: GenericCallback<arrayProducts>): void {
         fetch(this.baseLink)
@@ -51,7 +51,7 @@ export class Model {
     }
 
     sorting(sortingStatus: string) {
-        this.typeSorting = sortingStatus
+        // this.typeSorting = sortingStatus
         if (sortingStatus === "0") return;
         const productsContener = (document.querySelector('.products') as HTMLElement);
         const productsOnPageList = productsContener.querySelectorAll('.product-item');

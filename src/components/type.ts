@@ -7,6 +7,7 @@ interface IProductItem {
     description: string;
     range: number;
     price: number;
+    favorit: boolean;
 }
 type arrayProducts = Array<IProductItem>;
 type GenericCallback<T> = (data?: T) => void;
