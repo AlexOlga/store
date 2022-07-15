@@ -19,4 +19,18 @@ export class Products {
         (document.querySelector('.products') as HTMLElement).innerHTML = '';
         (document.querySelector('.products') as HTMLElement).appendChild(fragment);
     }
+    addProductInCart(elm: HTMLElement) {
+        elm.dataset.add = "true"
+        elm.textContent = "Передумать"
+    }
+    removeProductInCart(elm: HTMLElement) {
+        elm.dataset.add = "false"
+        elm.textContent = "В корзину"
+    }
+    getroductsOnPage() {
+        const productsContener = <HTMLSelectElement>document.querySelector(".products");
+        const productsOnPageList = productsContener.querySelectorAll('.product-item');
+        const productsOnPageArray = Array.prototype.slice.call(productsOnPageList);
+        return productsOnPageArray;
+    }
 }

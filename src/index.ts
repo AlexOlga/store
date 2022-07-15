@@ -7,7 +7,7 @@ import { maxTime, minTime } from './components/slider';
 
 const baseLink = './asset/product-catalog.json'
 const maxProductsInCart = 5; //максимальное возможное количество товаров в корзине 
-const app = new Controller(baseLink, maxProductsInCart, [minTime, maxTime], "0");
+const app = new Controller(baseLink, maxProductsInCart, [minTime, maxTime], "0", '');
 
 
 app.start();
