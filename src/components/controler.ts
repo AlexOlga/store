@@ -15,7 +15,7 @@ export class Controller {
     }
     start() {
         this.model.load((data) => {
-            console.log(data);
+            // console.log(data);
             if (data !== undefined) this.view.draw(data);
         })
     }
@@ -49,9 +49,9 @@ export class Controller {
 
     handleSorting() {
         const sortingStatus = <HTMLSelectElement>document.querySelector(".sorting");
-        console.log('sortingStatus', sortingStatus);
+        //   console.log('sortingStatus', sortingStatus);
         this.filterAll.typeSorting = sortingStatus.value;
-        console.log('sortingStatus', sortingStatus.value)
+        // console.log('sortingStatus', sortingStatus.value)
         const productsOnPageArray = this.view.getProductsOnPage();
         this.model.sorting(productsOnPageArray, sortingStatus.value)
     }
@@ -103,10 +103,9 @@ export class Controller {
     }
 
     getFilterData(data: arrayProducts) {
-        // console.log('data do', data);
         //фильт по избранному
         if (this.filterAll.favorit) data = data?.filter(itemData => itemData.favorit === this.filterAll.favorit);
-        console.log('data favorit', this.filterAll.favorit, data);
+
         //фильт по объектам
         if (this.filterAll.placeVizitId !== '') {
             data = data?.filter(itemData => {
@@ -117,18 +116,13 @@ export class Controller {
             })
         }
         //фильтр по времени
-        console.log('data ', data);
         data = data?.filter(itemData => (itemData.time >= this.filterAll.SliderTime[0]) && (itemData.time <= this.filterAll.SliderTime[1]));
-        console.log('data time', data);
-
         ///фильтр по растоянию
         data = data?.filter(itemData => (itemData.range >= this.filterAll.SliderRange[0]) && (itemData.range <= this.filterAll.SliderRange[1]));
-        console.log('data itog', data);
-
         return data
     }
     displayOnPage(data: arrayProducts) {
-        console.log('data do', data);
+
         data = this.getFilterData(data);
         if (data?.length === 0) {
             alert("Извините, совпадений не обнаружено");
@@ -144,6 +138,14 @@ export class Controller {
             }
         })
         this.model.sorting(productsOnPageArray, this.filterAll.typeSorting);
+    }
+    filterReset() {
+        const objectList = document.querySelectorAll('.chek-object');
+        const objectArray = Array.prototype.slice.call(objectList);
+        objectArray.forEach((item) => item.checked = false);
+        this.filterAll.placeVizitId = '';
+        this.filterAll.favorit = false;
+        this.model.load((data) => { if (data !== undefined) this.displayOnPage(data) })
     }
 }
 

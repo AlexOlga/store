@@ -14,7 +14,7 @@
     </div>    
   </header>
   <div>
-    <form class="filters">
+    <div class="filters">
       <div class="filters__group_big">
         <h3>Фильтры по значению</h3>      
         
@@ -112,11 +112,15 @@
             <option value="alphabet-revers">По названию, от Я до А</option>
             <option value="price-revers">По цене, сначала дорогие</option>
             <option value="price-forvard">По цене, сначала дешевые</option>
-          </select>
-          <input type="reset" class="button reset">
+          </select>         
+          <div class="button-group">
+            <button class="button reset-filter">Сброс фильтров</button>
+            <button class="button reset-all">Сброс настроек</button>
+          </div>
       </div>
-    </form>
-  
+
+    </div>
+   
   </div>
   <div class="products">
    

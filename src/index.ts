@@ -69,3 +69,13 @@ objectBody?.addEventListener('click', (e: Event) => app.handleObjectBlock(e));
 
 const favoritBody = document.querySelector('.favorit-body');
 favoritBody?.addEventListener('click', (e: Event) => app.handleFavorit(e));
+
+//сброс фильтров
+const resetButton = document.querySelector('.reset-filter');
+resetButton?.addEventListener('click', () => {
+    if (sliderTime.noUiSlider !== undefined) sliderTime.noUiSlider.reset();
+    if (slideRange.noUiSlider !== undefined) slideRange.noUiSlider.reset();
+    app.filterAll.SliderRange = filterStart.SliderRange;
+    app.filterAll.SliderTime = filterStart.SliderTime;
+    app.filterReset()
+});

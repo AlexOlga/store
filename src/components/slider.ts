@@ -59,8 +59,9 @@ if (slideRange.noUiSlider !== undefined) {
     });
 }
 */
+/*
 const resetButton = document.querySelector('.reset');
 resetButton?.addEventListener("click", () => {
     if (sliderTime.noUiSlider !== undefined) sliderTime.noUiSlider.reset();
     if (slideRange.noUiSlider !== undefined) slideRange.noUiSlider.reset();
-});
+});*/

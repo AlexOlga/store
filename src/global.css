@@ -67,7 +67,7 @@ h1 {
     border: 0px solid var(--global-color);
     border-radius: 10px;
     height: 30px;
-    width: 80px;
+    width: 120px;
     cursor: pointer;
     transition: 0.3s;
 }
@@ -161,7 +161,7 @@ input {
 #site-search {
     padding: 5px;
     border: 1px solid var(--global-color);
-    border-radius: 20px;
+    border-radius: 10px;
     outline: none;
     margin-bottom: 5px;
 }
