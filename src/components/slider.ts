@@ -5,6 +5,8 @@ import './slider.css';
 export const maxTime = 677;
 export const minTime = 11;
 const sliderTime = document.getElementById('slider-time') as noUiSlider.target;
+
+
 noUiSlider.create(sliderTime, {
     start: [11, 677],
     tooltips: true,
@@ -24,20 +26,9 @@ noUiSlider.create(sliderTime, {
     }
 
 });
-/*
-const timeValues: Array<HTMLInputElement> = [
-    <HTMLInputElement>document.getElementById('slider-time-value-lower'),
-    <HTMLInputElement>document.getElementById('slider-time-value-upper')
-];
 
-if (sliderTime.noUiSlider !== undefined) {
-    sliderTime.noUiSlider.on('update', function (values, handle) {
-        timeValues[handle].value = `${values[handle]}`;
-    });
-}
-*/
-//sliderTime.addEventListener('change', () => { console.log(sliderTime.getAnimations()) })
-
+export const maxRange = 117;
+export const minRange = 2;
 const slideRange = document.getElementById('slider-range') as noUiSlider.target;
 noUiSlider.create(slideRange, {
     start: [2, 117],
@@ -57,6 +48,7 @@ noUiSlider.create(slideRange, {
         }
     }
 });
+/*
 const rangeValues: Array<HTMLInputElement> = [
     <HTMLInputElement>document.getElementById('slider-range-value-lower'),
     <HTMLInputElement>document.getElementById('slider-range-value-upper')
@@ -66,6 +58,7 @@ if (slideRange.noUiSlider !== undefined) {
         rangeValues[handle].value = `${values[handle]}`;
     });
 }
+*/
 const resetButton = document.querySelector('.reset');
 resetButton?.addEventListener("click", () => {
     if (sliderTime.noUiSlider !== undefined) sliderTime.noUiSlider.reset();

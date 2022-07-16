@@ -1,5 +1,4 @@
-type GenericCallback<T> = (data?: T) => void;
-import { arrayProducts } from './type'
+import { arrayProducts, GenericCallback } from './type'
 export class Model {
     baseLink: string;
     constructor(baseLink: string) {
@@ -11,6 +10,7 @@ export class Model {
             .then((data) => callback(data))
             .catch((err: Error) => console.error(err));
     }
+
     sorting(productsOnPageArray: Array<HTMLElement>, sortingStatus: string) {
         if (sortingStatus === "0") return;
         const productsContener = (document.querySelector('.products') as HTMLElement);
@@ -23,7 +23,6 @@ export class Model {
                     if (elm1 > elm2) return 1;
                 }
                 return 0;
-
             });
         }
         if (sortingStatus === "alphabet-revers") {
@@ -35,7 +34,6 @@ export class Model {
                     if (elm1 > elm2) return -1;
                 }
                 return 0;
-
             });
         }
         if (sortingStatus === "price-forvard") {
@@ -64,6 +62,5 @@ export class Model {
         }
         productsContener.innerHTML = '';
         productsOnPageArray.forEach((item) => { productsContener.appendChild(item) });
-
     }
 }

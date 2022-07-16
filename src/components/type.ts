@@ -4,6 +4,7 @@ interface IProductItem {
     urlToImage: string;
     time: number;
     placeVizit: Array<string>;
+    placeVizitId: Array<string>;
     description: string;
     range: number;
     price: number;
@@ -11,4 +12,13 @@ interface IProductItem {
 }
 type arrayProducts = Array<IProductItem>;
 type GenericCallback<T> = (data?: T) => void;
-export { arrayProducts, IProductItem, GenericCallback }
+
+interface Ifilter {
+    SliderTime: [number, number];
+    SliderRange: [number, number];
+    typeSorting: string;
+    productInCart: string;
+    placeVizitId: string;
+    favorit: boolean;
+}
+export { arrayProducts, IProductItem, GenericCallback, Ifilter }

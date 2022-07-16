@@ -13,6 +13,7 @@ export class Products {
             (newsClone.querySelector('.product__time') as HTMLElement).textContent = `${item.time}`;
             (newsClone.querySelector('.product__placeVizit') as HTMLElement).textContent = item.placeVizit.join(' ');
             (newsClone.querySelector('.product__price') as HTMLElement).textContent = `${item.price}`;
+
             fragment.append(newsClone);
         });
 
@@ -27,6 +28,7 @@ export class Products {
         elm.dataset.add = "false"
         elm.textContent = "В корзину"
     }
+
     getroductsOnPage() {
         const productsContener = <HTMLSelectElement>document.querySelector(".products");
         const productsOnPageList = productsContener.querySelectorAll('.product-item');
