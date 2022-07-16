@@ -29,7 +29,7 @@ export class Products {
         elm.textContent = "В корзину"
     }
 
-    getroductsOnPage() {
+    getProductsOnPage() {
         const productsContener = <HTMLSelectElement>document.querySelector(".products");
         const productsOnPageList = productsContener.querySelectorAll('.product-item');
         const productsOnPageArray = Array.prototype.slice.call(productsOnPageList);

@@ -52,46 +52,35 @@ export class Controller {
         console.log('sortingStatus', sortingStatus);
         this.filterAll.typeSorting = sortingStatus.value;
         console.log('sortingStatus', sortingStatus.value)
-        const productsOnPageArray = this.view.getroductsOnPage();
+        const productsOnPageArray = this.view.getProductsOnPage();
         this.model.sorting(productsOnPageArray, sortingStatus.value)
     }
-    /*
-        handleSliderTime(values: number, handle: number) {
-            this.SliderTime[handle] = values;
-            this.model.load((data) => {
-                data = data?.filter(item => (item.time >= this.SliderTime[0]) && (item.time <= this.SliderTime[1]));
-                if (data !== undefined) this.view.draw(data);
-                const productsOnPageArray = this.view.getroductsOnPage();
-                productsOnPageArray.forEach((item) => {
-                    const elm = <HTMLElement>item.querySelector('.product__button')
-                    const idItem = elm.dataset.id;
-                    if (this.productInCart.indexOf(`${idItem}&`) !== -1) {
-                        this.view.addProductInCart(elm);
-                    }
-                })
-                this.model.sorting(productsOnPageArray, this.typeSorting);
-            }
-            );
+    handleSliderTime(values: number, handle: number) {
+        this.filterAll.SliderTime[handle] = values;
+        this.model.load((data) => { if (data !== undefined) this.displayOnPage(data) })
+
+    }
+    handleSliderRange(values: number, handle: number) {
+        this.filterAll.SliderRange[handle] = values;
+        this.model.load((data) => { if (data !== undefined) this.displayOnPage(data) })
+        /*
+        this.model.load((data) => {
+            data = data?.filter(item => (item.time >= this.SliderRange[0]) && (item.time <= this.SliderRange[1]));
+            if (data !== undefined) this.view.draw(data);
+            const productsOnPageArray = this.view.getroductsOnPage();
+            productsOnPageArray.forEach((item) => {
+                const elm = <HTMLElement>item.querySelector('.product__button')
+                const idItem = elm.dataset.id;
+                if (this.productInCart.indexOf(`${idItem}&`) !== -1) {
+                    this.view.addProductInCart(elm);
+                }
+            })
+            this.model.sorting(productsOnPageArray, this.typeSorting);
         }
-        handleSliderRange(values: number, handle: number) {
-            this.SliderRange[handle] = values;
-            this.model.load((data) => {
-                data = data?.filter(item => (item.time >= this.SliderRange[0]) && (item.time <= this.SliderRange[1]));
-                if (data !== undefined) this.view.draw(data);
-                const productsOnPageArray = this.view.getroductsOnPage();
-                productsOnPageArray.forEach((item) => {
-                    const elm = <HTMLElement>item.querySelector('.product__button')
-                    const idItem = elm.dataset.id;
-                    if (this.productInCart.indexOf(`${idItem}&`) !== -1) {
-                        this.view.addProductInCart(elm);
-                    }
-                })
-                this.model.sorting(productsOnPageArray, this.typeSorting);
-            }
-            );
-    
-        }
-        */
+        );*/
+
+    }
+
     handleObjectBlock(e: Event) {
         const elm = e.target as HTMLElement;
         if (elm.classList.contains("chek-object")) {
@@ -111,10 +100,6 @@ export class Controller {
             this.filterAll.favorit = elmInput.checked
         }
         this.model.load((data) => { if (data !== undefined) this.displayOnPage(data) })
-        /* this.model.load((data) => {
-            if (this.filterAll.favorit) data = data?.filter(itemData => itemData.favorit === this.filterAll.favorit);
-             console.log('рисуем нужное', data);
-         })*/
     }
 
     getFilterData(data: arrayProducts) {
@@ -131,16 +116,15 @@ export class Controller {
                 return isFilter;
             })
         }
-
-        console.log('data obj', data);
-        /*
         //фильтр по времени
-        data = data?.filter(item => (item.time >= this.SliderTime[0]) && (item.time <= this.SliderTime[1]));
+        console.log('data ', data);
+        data = data?.filter(itemData => (itemData.time >= this.filterAll.SliderTime[0]) && (itemData.time <= this.filterAll.SliderTime[1]));
         console.log('data time', data);
+
         ///фильтр по растоянию
-        data = data?.filter(item => (item.time >= this.SliderRange[0]) && (item.time <= this.SliderRange[1]));
+        data = data?.filter(itemData => (itemData.range >= this.filterAll.SliderRange[0]) && (itemData.range <= this.filterAll.SliderRange[1]));
         console.log('data itog', data);
-        */
+
         return data
     }
     displayOnPage(data: arrayProducts) {
@@ -151,7 +135,7 @@ export class Controller {
             return
         }
         this.view.draw(data);
-        const productsOnPageArray = this.view.getroductsOnPage();
+        const productsOnPageArray = this.view.getProductsOnPage();
         productsOnPageArray.forEach((item) => {
             const elm = <HTMLElement>item.querySelector('.product__button')
             const idItem = elm.dataset.id;

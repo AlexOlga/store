@@ -4,7 +4,7 @@ import * as noUiSlider from 'nouislider';
 import './components/slider'
 import { Controller } from './components/controler'
 import { maxTime, minTime, maxRange, minRange } from './components/slider';
-import { arrayProducts, Ifilter } from './components/type'
+import { Ifilter } from './components/type'
 
 const baseLink = './asset/product-catalog.json'
 const maxProductsInCart = 5; //максимальное возможное количество товаров в корзине 
@@ -29,7 +29,7 @@ productsBlok?.addEventListener('click', (e: Event) => app.handleProduct(e));
 
 const sortingStatus = <HTMLSelectElement>document.querySelector(".sorting");
 sortingStatus.addEventListener('change', () => app.handleSorting())
-/*
+
 //слайдер тайм
 
 const sliderTime = document.getElementById('slider-time') as noUiSlider.target;
@@ -59,7 +59,7 @@ if (slideRange.noUiSlider !== undefined) {
         app.handleSliderRange(Number(values[handle]), handle);
     });
 }
-*/
+
 //объекты
 
 const objectBody = document.querySelector('.object-body');
