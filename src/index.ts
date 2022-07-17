@@ -138,7 +138,10 @@ inputSearch?.addEventListener('change', searchOnPage);
 
 function searchOnPage() {
     const searchStr = inputSearch.value.toUpperCase();
-    productOnPage = document.querySelectorAll('.product-item'); /*не меняем для возвращения после очистки*/
+    if (searchStr === '') {
+        app.model.load((data) => { if (data !== undefined) app.displayOnPage(data) })
+    }
+    productOnPage = document.querySelectorAll('.product-item');
 
     const productOnPageArray = Array.prototype.slice.call(productOnPage);
     const fragment = document.createDocumentFragment();
