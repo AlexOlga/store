@@ -77,6 +77,8 @@ resetButton?.addEventListener('click', () => {
     app.filterAll.SliderTime = filterStart.SliderTime;
     if (sliderTime.noUiSlider !== undefined) sliderTime.noUiSlider.reset();
     if (slideRange.noUiSlider !== undefined) slideRange.noUiSlider.reset();
+    const inputSearch = <HTMLInputElement>document.getElementById('site-search');
+    inputSearch.value = ''
     app.filterReset()
 });
 
@@ -118,8 +120,45 @@ function resetAll() {
     if (slideRange.noUiSlider !== undefined) slideRange.noUiSlider.reset();
     //сброс сортировки
     app.filterAll.typeSorting = "0";
-    const sortingStatus = <HTMLSelectElement>document.querySelector(".sorting");
+    const sortingStatus = <HTMLSelectElement>document.querySelector('.sorting');
     sortingStatus.value = app.filterAll.typeSorting;
+    //сброс поиска
+    const inputSearch = <HTMLInputElement>document.getElementById('site-search');
+    inputSearch.value = ''
     app.filterReset();
 
 }
+
+
+//поиск
+
+const inputSearch = <HTMLInputElement>document.getElementById('site-search');
+let productOnPage = document.querySelectorAll('.product-item');
+inputSearch?.addEventListener('change', searchOnPage);
+
+function searchOnPage() {
+    const searchStr = inputSearch.value.toUpperCase();
+    productOnPage = document.querySelectorAll('.product-item'); /*не меняем для возвращения после очистки*/
+
+    const productOnPageArray = Array.prototype.slice.call(productOnPage);
+    const fragment = document.createDocumentFragment();
+    let isSeach = false;
+    productOnPageArray.forEach((itemProduct) => {
+        const name = itemProduct.querySelector('.product__name').textContent.toUpperCase();
+        if (name.indexOf(searchStr) !== -1) {
+            fragment.append(itemProduct);
+            isSeach = true;
+        }
+    });
+
+    if (isSeach) {
+        (document.querySelector('.products') as HTMLElement).innerHTML = '';
+        (document.querySelector('.products') as HTMLElement).appendChild(fragment);
+    } else alert('Извините, совпадений не обнаружено');
+}
+
+inputSearch.addEventListener('keydown', function (e: KeyboardEvent) {
+    if (e.key === 'Enter') {
+        searchOnPage()
+    }
+});

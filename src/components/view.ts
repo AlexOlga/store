@@ -59,7 +59,7 @@ export class Products {
                 const objectArrayLoad = allFilter.placeVizitId.split('&');
                 objectArrayLoad.forEach((item) => {
                     const elmOnPage = <HTMLInputElement>document.getElementById(item);
-                    elmOnPage.checked = true
+                    if (elmOnPage) elmOnPage.checked = true
                 });
             }
         }

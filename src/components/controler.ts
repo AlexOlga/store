@@ -106,7 +106,8 @@ export class Controller {
         return data
     }
     displayOnPage(data: arrayProducts) {
-
+        const inputSearch = <HTMLInputElement>document.getElementById('site-search');
+        inputSearch.value = ''
         data = this.getFilterData(data);
         if (data?.length === 0) {
             alert("Извините, совпадений не обнаружено");
@@ -122,6 +123,7 @@ export class Controller {
             }
         })
         this.model.sorting(productsOnPageArray, this.filterAll.typeSorting);
+
     }
 
     filterReset() {
