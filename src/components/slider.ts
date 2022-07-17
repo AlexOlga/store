@@ -5,8 +5,6 @@ import './slider.css';
 export const maxTime = 677;
 export const minTime = 11;
 const sliderTime = document.getElementById('slider-time') as noUiSlider.target;
-
-
 noUiSlider.create(sliderTime, {
     start: [11, 677],
     tooltips: true,
@@ -47,21 +45,4 @@ noUiSlider.create(slideRange, {
             return Math.round(Number(value));
         }
     }
-});
-/*
-const rangeValues: Array<HTMLInputElement> = [
-    <HTMLInputElement>document.getElementById('slider-range-value-lower'),
-    <HTMLInputElement>document.getElementById('slider-range-value-upper')
-];
-if (slideRange.noUiSlider !== undefined) {
-    slideRange.noUiSlider.on('update', function (values, handle) {
-        rangeValues[handle].value = `${values[handle]}`;
-    });
-}
-*/
-
-const resetButton = document.querySelector('.reset-filter');
-resetButton?.addEventListener("click", () => {
-    if (sliderTime.noUiSlider !== undefined) sliderTime.noUiSlider.reset();
-    if (slideRange.noUiSlider !== undefined) slideRange.noUiSlider.reset();
 });

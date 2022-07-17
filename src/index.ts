@@ -75,8 +75,11 @@ const resetButton = document.querySelector('.reset-filter');
 resetButton?.addEventListener('click', () => {
     app.filterAll.SliderRange = filterStart.SliderRange;
     app.filterAll.SliderTime = filterStart.SliderTime;
+    if (sliderTime.noUiSlider !== undefined) sliderTime.noUiSlider.reset();
+    if (slideRange.noUiSlider !== undefined) slideRange.noUiSlider.reset();
     app.filterReset()
 });
+
 //local storage
 function setLocalStorage() {
     localStorage.setItem('allFilter', JSON.stringify(app.filterAll));
@@ -90,7 +93,33 @@ function getLocalStorage() {
             console.log(JSON.parse(allFilter))
             app.start();
             app.view.getLocalStorage(app.filterAll);
+            sliderTime.noUiSlider?.setHandle(0, app.filterAll.SliderTime[0]);
+            sliderTime.noUiSlider?.setHandle(1, app.filterAll.SliderTime[1]);
+            slideRange.noUiSlider?.setHandle(0, app.filterAll.SliderRange[0]);
+            slideRange.noUiSlider?.setHandle(1, app.filterAll.SliderRange[1]);
         }
     }
 }
-window.addEventListener('load', getLocalStorage)
+window.addEventListener('load', getLocalStorage);
+
+//сброс local storage
+
+const resetAllButton = document.querySelector('.reset-all');
+resetAllButton?.addEventListener('click', resetAll);
+function resetAll() {
+    //товар в корзине
+    app.filterAll.productInCart = '';
+    const cart = (document.querySelector('.cart__number') as HTMLElement)
+    cart.textContent = `0`
+    //слайдеры
+    app.filterAll.SliderRange = filterStart.SliderRange;
+    app.filterAll.SliderTime = filterStart.SliderTime;
+    if (sliderTime.noUiSlider !== undefined) sliderTime.noUiSlider.reset();
+    if (slideRange.noUiSlider !== undefined) slideRange.noUiSlider.reset();
+    //сброс сортировки
+    app.filterAll.typeSorting = "0";
+    const sortingStatus = <HTMLSelectElement>document.querySelector(".sorting");
+    sortingStatus.value = app.filterAll.typeSorting;
+    app.filterReset();
+
+}
