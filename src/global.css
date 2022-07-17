@@ -76,6 +76,10 @@ h1 {
     background-color: var(--link-hover);
 }
 
+.button-group {
+    padding: 10px;
+}
+
 h3 {
     color: var(--global-color);
     font-size: 1.5rem;
@@ -88,8 +92,9 @@ h3 {
 
 
 .filters {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 30% 38% 32%;
+    justify-items: center;
     padding: 10px;
     border: 1px solid var(--global-color);
     border-radius: 20px;
@@ -98,12 +103,7 @@ h3 {
 .filters__group {
     display: flex;
     flex-direction: column;
-    width: 30%;
     padding: 5px;
-}
-
-.filters__group_big {
-    width: 40%;
 }
 
 select,
@@ -186,7 +186,7 @@ input {
     gap: 50px;
     padding: 10px;
     padding-top: 50px;
-
+    justify-content: center;
 
 }
 
@@ -270,4 +270,75 @@ input {
 
 .rss-logo:hover {
     transform: scale(1.1);
+}
+
+@media (max-width: 1023px) {
+    .filters {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: "object  other"
+            "diapason diapason";
+        justify-items: center;
+    }
+
+    .filters-object {
+        grid-area: object;
+    }
+
+    .filters-diapason {
+        grid-area: diapason;
+    }
+
+    .filters-other {
+        grid-area: other;
+    }
+
+    .products {
+        gap: 10px;
+    }
+
+}
+
+@media (max-width: 425px) {
+    .filters {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 320px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .filters {
+        padding: 5px;
+    }
+
+    .header {
+        padding: 5px;
+    }
+
+    .cart {
+        background-size: 24px 30px;
+        width: 50px;
+        height: 50px;
+    }
+
+    .cart__number {
+        top: 3px;
+        left: 20px;
+    }
+
+    .products {
+        padding-top: 10px;
+    }
+
+    .product-item {
+        max-width: 100%;
+    }
+
+    .note {
+        text-align: justify;
+    }
 }
