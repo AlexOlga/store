@@ -46,7 +46,6 @@ if (sliderTime.noUiSlider !== undefined) {
 }
 
 //слайдер растояние
-
 const slideRange = document.getElementById('slider-range') as noUiSlider.target;
 const rangeValues: Array<HTMLInputElement> = [
     <HTMLInputElement>document.getElementById('slider-range-value-lower'),
@@ -71,11 +70,27 @@ const favoritBody = document.querySelector('.favorit-body');
 favoritBody?.addEventListener('click', (e: Event) => app.handleFavorit(e));
 
 //сброс фильтров
+
 const resetButton = document.querySelector('.reset-filter');
 resetButton?.addEventListener('click', () => {
-    if (sliderTime.noUiSlider !== undefined) sliderTime.noUiSlider.reset();
-    if (slideRange.noUiSlider !== undefined) slideRange.noUiSlider.reset();
     app.filterAll.SliderRange = filterStart.SliderRange;
     app.filterAll.SliderTime = filterStart.SliderTime;
     app.filterReset()
 });
+//local storage
+function setLocalStorage() {
+    localStorage.setItem('allFilter', JSON.stringify(app.filterAll));
+}
+window.addEventListener('beforeunload', setLocalStorage);
+function getLocalStorage() {
+    if (localStorage.getItem('allFilter')) {
+        const allFilter = localStorage.getItem('allFilter');
+        if (allFilter) {
+            app.filterAll = JSON.parse(allFilter);
+            console.log(JSON.parse(allFilter))
+            app.start();
+            app.view.getLocalStorage(app.filterAll);
+        }
+    }
+}
+window.addEventListener('load', getLocalStorage)

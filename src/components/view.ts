@@ -1,4 +1,6 @@
-import { arrayProducts } from './type'
+import { arrayProducts, Ifilter } from './type'
+import * as noUiSlider from 'nouislider';
+
 export class Products {
     draw(data: arrayProducts) {
         const fragment = document.createDocumentFragment();
@@ -34,5 +36,53 @@ export class Products {
         const productsOnPageList = productsContener.querySelectorAll('.product-item');
         const productsOnPageArray = Array.prototype.slice.call(productsOnPageList);
         return productsOnPageArray;
+    }
+    getLocalStorage(allFilter: Ifilter) {
+        console.log('отрисовка на странице', allFilter)
+        //элементы в корзине
+        const cart = (document.querySelector('.cart__number') as HTMLElement)
+        if (allFilter.productInCart === '') cart.textContent = `0`
+        else {
+            const numberProductsInCart = allFilter.productInCart.split('&').length;
+            cart.textContent = `${numberProductsInCart}`;
+        }
+        //избранное
+        const favoritElement = <HTMLInputElement>document.getElementById('favorit');
+        if (allFilter.favorit) favoritElement.checked = true;
+        //сортировка
+        const sortingStatus = <HTMLSelectElement>document.querySelector(".sorting");
+        sortingStatus.value = allFilter.typeSorting;
+        //объекты
+        if (allFilter.placeVizitId !== '') {
+            const objectBody = document.querySelector('.object-body');
+            if (objectBody) {
+                const objectArrayLoad = allFilter.placeVizitId.split('&');
+                objectArrayLoad.forEach((item) => {
+                    const elmOnPage = <HTMLInputElement>document.getElementById(item);
+                    elmOnPage.checked = true
+                });
+            }
+        }
+        //слайдер время
+        const sliderTime = document.getElementById('slider-time') as noUiSlider.target;
+        sliderTime.noUiSlider?.setHandle(0, allFilter.SliderTime[0]);
+        sliderTime.noUiSlider?.setHandle(1, allFilter.SliderTime[1]);
+        const timeValues: Array<HTMLInputElement> = [
+            <HTMLInputElement>document.getElementById('slider-time-value-lower'),
+            <HTMLInputElement>document.getElementById('slider-time-value-upper')
+        ];
+        timeValues[0].value = `${allFilter.SliderTime[0]}`;
+        timeValues[1].value = `${allFilter.SliderTime[1]}`;
+        //слайдер растояние
+        const SliderRange = document.getElementById('slider-range') as noUiSlider.target;
+        SliderRange.noUiSlider?.setHandle(0, allFilter.SliderRange[0]);
+        SliderRange.noUiSlider?.setHandle(1, allFilter.SliderRange[1]);
+        const rangeValues: Array<HTMLInputElement> = [
+            <HTMLInputElement>document.getElementById('slider-range-value-lower'),
+            <HTMLInputElement>document.getElementById('slider-range-value-upper')
+        ];
+        rangeValues[0].value = `${allFilter.SliderRange[0]}`;
+        rangeValues[1].value = `${allFilter.SliderRange[1]}`;
+
     }
 }

@@ -16,7 +16,8 @@ export class Controller {
     start() {
         this.model.load((data) => {
             // console.log(data);
-            if (data !== undefined) this.view.draw(data);
+            //  if (data !== undefined) this.view.draw(data);
+            if (data !== undefined) this.displayOnPage(data);
         })
     }
 
@@ -58,27 +59,11 @@ export class Controller {
     handleSliderTime(values: number, handle: number) {
         this.filterAll.SliderTime[handle] = values;
         this.model.load((data) => { if (data !== undefined) this.displayOnPage(data) })
-
     }
+
     handleSliderRange(values: number, handle: number) {
         this.filterAll.SliderRange[handle] = values;
         this.model.load((data) => { if (data !== undefined) this.displayOnPage(data) })
-        /*
-        this.model.load((data) => {
-            data = data?.filter(item => (item.time >= this.SliderRange[0]) && (item.time <= this.SliderRange[1]));
-            if (data !== undefined) this.view.draw(data);
-            const productsOnPageArray = this.view.getroductsOnPage();
-            productsOnPageArray.forEach((item) => {
-                const elm = <HTMLElement>item.querySelector('.product__button')
-                const idItem = elm.dataset.id;
-                if (this.productInCart.indexOf(`${idItem}&`) !== -1) {
-                    this.view.addProductInCart(elm);
-                }
-            })
-            this.model.sorting(productsOnPageArray, this.typeSorting);
-        }
-        );*/
-
     }
 
     handleObjectBlock(e: Event) {
@@ -90,7 +75,6 @@ export class Controller {
             this.model.load((data) => { if (data !== undefined) this.displayOnPage(data) })
 
         }
-
     }
 
     handleFavorit(e: Event) {
@@ -117,8 +101,8 @@ export class Controller {
         }
         //фильтр по времени
         data = data?.filter(itemData => (itemData.time >= this.filterAll.SliderTime[0]) && (itemData.time <= this.filterAll.SliderTime[1]));
-        ///фильтр по растоянию
-        data = data?.filter(itemData => (itemData.range >= this.filterAll.SliderRange[0]) && (itemData.range <= this.filterAll.SliderRange[1]));
+        //фильтр по растоянию
+        //  data = data?.filter(itemData => (itemData.range >= this.filterAll.SliderRange[0]) && (itemData.range <= this.filterAll.SliderRange[1]));
         return data
     }
     displayOnPage(data: arrayProducts) {
@@ -139,6 +123,7 @@ export class Controller {
         })
         this.model.sorting(productsOnPageArray, this.filterAll.typeSorting);
     }
+
     filterReset() {
         const objectList = document.querySelectorAll('.chek-object');
         const objectArray = Array.prototype.slice.call(objectList);
@@ -147,5 +132,6 @@ export class Controller {
         this.filterAll.favorit = false;
         this.model.load((data) => { if (data !== undefined) this.displayOnPage(data) })
     }
+
 }
 
