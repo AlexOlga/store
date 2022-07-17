@@ -63,7 +63,7 @@ export class Controller {
 
     handleSliderRange(values: number, handle: number) {
         this.filterAll.SliderRange[handle] = values;
-        this.model.load((data) => { if (data !== undefined) this.displayOnPage(data) })
+        // this.model.load((data) => { if (data !== undefined) this.displayOnPage(data) })       
     }
 
     handleObjectBlock(e: Event) {
