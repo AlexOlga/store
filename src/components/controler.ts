@@ -32,7 +32,7 @@ export class Controller {
             let cartNumber = cart.textContent ? +cart.textContent : 0;
 
             if (elm.dataset.add === "false") {
-                if (this.isFullCart(cartNumber)) { alert("Извините, все слоты заполнены") }
+                if (this.isFullCart(cartNumber)) this.view.openPopUp("Извините, все слоты заполнены")
                 else {
                     this.view.addProductInCart(elm)
                     this.filterAll.productInCart = this.filterAll.productInCart + `${elm.dataset.id}&`
@@ -63,7 +63,7 @@ export class Controller {
 
     handleSliderRange(values: number, handle: number) {
         this.filterAll.SliderRange[handle] = values;
-        // this.model.load((data) => { if (data !== undefined) this.displayOnPage(data) })       
+        //this.model.load((data) => { if (data !== undefined) this.displayOnPage(data) })
     }
 
     handleObjectBlock(e: Event) {
@@ -110,7 +110,7 @@ export class Controller {
         inputSearch.value = ''
         data = this.getFilterData(data);
         if (data?.length === 0) {
-            alert("Извините, совпадений не обнаружено");
+            this.view.openPopUp("Извините, совпадений не обнаружено");
             return
         }
         this.view.draw(data);

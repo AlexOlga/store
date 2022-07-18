@@ -131,15 +131,23 @@ function resetAll() {
 
 
 //поиск
-
+const buttunSearch = document.querySelector('.button-search');
 const inputSearch = <HTMLInputElement>document.getElementById('site-search');
 let productOnPage = document.querySelectorAll('.product-item');
-inputSearch?.addEventListener('change', searchOnPage);
-
-function searchOnPage() {
+buttunSearch?.addEventListener('click', searchOnPage);
+inputSearch.addEventListener('input', () => {
     const searchStr = inputSearch.value.toUpperCase();
     if (searchStr === '') {
         app.model.load((data) => { if (data !== undefined) app.displayOnPage(data) })
+        buttunSearch?.classList.remove('button_hidden');
+    }
+});
+function searchOnPage() {
+    const searchStr = inputSearch.value.toUpperCase();
+    buttunSearch?.classList.add('button_hidden');
+    if (searchStr === '') {
+        app.model.load((data) => { if (data !== undefined) app.displayOnPage(data) })
+        buttunSearch?.classList.remove('button_hidden');
     }
     productOnPage = document.querySelectorAll('.product-item');
 
@@ -157,7 +165,7 @@ function searchOnPage() {
     if (isSeach) {
         (document.querySelector('.products') as HTMLElement).innerHTML = '';
         (document.querySelector('.products') as HTMLElement).appendChild(fragment);
-    } else alert('Извините, совпадений не обнаружено');
+    } else app.view.openPopUp('Извините, совпадений не обнаружено');
 }
 
 inputSearch.addEventListener('keydown', function (e: KeyboardEvent) {
@@ -165,3 +173,5 @@ inputSearch.addEventListener('keydown', function (e: KeyboardEvent) {
         searchOnPage()
     }
 });
+const closePopBtn = document.querySelector('.pop__close');
+closePopBtn?.addEventListener('click', app.view.closePopUp)

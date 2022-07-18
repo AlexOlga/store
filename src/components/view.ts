@@ -1,5 +1,5 @@
 import { arrayProducts, Ifilter } from './type'
-//import * as noUiSlider from 'nouislider';
+import './popup.css'
 
 export class Products {
     draw(data: arrayProducts) {
@@ -25,10 +25,15 @@ export class Products {
     addProductInCart(elm: HTMLElement) {
         elm.dataset.add = "true"
         elm.textContent = "Передумать"
+        const parentElm = elm.closest('.product-item');
+        parentElm?.classList.add('product-item_active')
+
     }
     removeProductInCart(elm: HTMLElement) {
         elm.dataset.add = "false"
         elm.textContent = "В корзину"
+        const parentElm = elm.closest('.product-item');
+        parentElm?.classList.remove('product-item_active')
     }
 
     getProductsOnPage() {
@@ -78,4 +83,33 @@ export class Products {
         rangeValues[0].value = `${allFilter.SliderRange[0]}`;
         rangeValues[1].value = `${allFilter.SliderRange[1]}`;
     }
+    openPopUp(messenge: string) {
+        const popup = document.querySelector('.pop');
+        //  const closePopBtn=document.querySelector('.pop__close');
+        const blackout = document.querySelector('.blackout');
+        (document.querySelector('.pop__text') as HTMLElement).textContent = messenge;
+        if (popup) {
+            // popup.classList.add('transition-opaque');
+            popup.classList.add('pop-active');
+        }
+        if (blackout) blackout.classList.add('blackout-active');
+        document.body.classList.add('look');
+    }
+    closePopUp() {
+        const popup = document.querySelector('.pop');
+        const blackout = document.querySelector('.blackout');
+        if (popup) {
+            //popup.classList.add('transition-opacity');           
+            popup.classList.remove('pop-active');
+            //  popup.classList.remove('.transition-opaque');            
+            document.body.classList.remove('look');
+            //  popup.classList.remove('transition-opacity');
+            if (blackout) blackout.classList.remove('blackout-active');
+        }
+
+    }
+
+
+
 }
+

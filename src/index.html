@@ -100,8 +100,12 @@
         </div>        
       </div>
       <div class="filters__group filters-other">
-        <label class="signature" for="site-search">Поиск:</label>
+        <div class="search-body">
+          <label class="signature" for="site-search">Поиск:</label>
           <input placeholder="Введите текст" type="search" name="search" id="site-search" autocomplete="off" autofocus="autofocus">
+          <button class="button-search"></button>
+        </div>
+       
         <p class="signature">Сортировка:</p>
           <select name="sorting"  size="1" class="sorting">
             <option selected value="0"></option>
@@ -123,6 +127,18 @@
   </div>
   <p class="note">* Время и стоимость путёвки зависят от расположения планет и может меняться в зависимости от времени заезда! Пожалуйста уточните конкретные значения с вашим персональным менеджером.</p>
   <p class="note">** Обратите внимание, один заказ не может включать более 5 туров</p>
+  <div class="blackout">         
+  </div>
+  <div class="pop">
+      <div class="pop__close">
+          <button class="button-close ">
+              <img src="./asset/svg/close.png">
+          </button>
+      </div>
+          <div class="pop__body">
+            <p class="pop__text"></p>
+          </div>
+  </div>
   <footer class="footer">            
     <p >
         <a class="git-link" href="https://github.com/AlexOlga">GitHub</a>
