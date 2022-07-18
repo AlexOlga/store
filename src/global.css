@@ -111,15 +111,12 @@ input {
     cursor: pointer;
 }
 
-
-
 .object-body {
     display: grid;
     grid-template-columns: 1fr 2fr;
     row-gap: 5px;
     column-gap: 10px;
 }
-
 
 .label-object {
     padding-left: 5px;
@@ -181,9 +178,6 @@ input {
 }
 
 .button-search {
-    /*position: absolute;
-    top: 0;
-    right: 0px;*/
     margin-left: -10px;
     width: 30px;
     height: 28px;

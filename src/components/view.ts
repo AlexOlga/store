@@ -85,13 +85,9 @@ export class Products {
     }
     openPopUp(messenge: string) {
         const popup = document.querySelector('.pop');
-        //  const closePopBtn=document.querySelector('.pop__close');
         const blackout = document.querySelector('.blackout');
         (document.querySelector('.pop__text') as HTMLElement).textContent = messenge;
-        if (popup) {
-            // popup.classList.add('transition-opaque');
-            popup.classList.add('pop-active');
-        }
+        if (popup) popup.classList.add('pop-active');
         if (blackout) blackout.classList.add('blackout-active');
         document.body.classList.add('look');
     }
@@ -99,17 +95,11 @@ export class Products {
         const popup = document.querySelector('.pop');
         const blackout = document.querySelector('.blackout');
         if (popup) {
-            //popup.classList.add('transition-opacity');           
             popup.classList.remove('pop-active');
-            //  popup.classList.remove('.transition-opaque');            
             document.body.classList.remove('look');
-            //  popup.classList.remove('transition-opacity');
             if (blackout) blackout.classList.remove('blackout-active');
         }
 
     }
-
-
-
 }
 

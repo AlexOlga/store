@@ -20,7 +20,7 @@ const app = new Controller(baseLink, maxProductsInCart, filterStart);
 
 app.start();
 
-//добавление в конзину
+//добавление в корзину
 
 const productsBlok = document.querySelector('.products') ? document.querySelector('.products') : console.log('блок не найден');
 productsBlok?.addEventListener('click', (e: Event) => app.handleProduct(e));
@@ -92,7 +92,6 @@ function getLocalStorage() {
         const allFilter = localStorage.getItem('allFilter');
         if (allFilter) {
             app.filterAll = JSON.parse(allFilter);
-            console.log(JSON.parse(allFilter))
             app.start();
             app.view.getLocalStorage(app.filterAll);
             sliderTime.noUiSlider?.setHandle(0, app.filterAll.SliderTime[0]);

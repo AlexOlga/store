@@ -15,8 +15,6 @@ export class Controller {
     }
     start() {
         this.model.load((data) => {
-            // console.log(data);
-            //  if (data !== undefined) this.view.draw(data);
             if (data !== undefined) this.displayOnPage(data);
         })
     }
@@ -50,9 +48,7 @@ export class Controller {
 
     handleSorting() {
         const sortingStatus = <HTMLSelectElement>document.querySelector(".sorting");
-        //   console.log('sortingStatus', sortingStatus);
         this.filterAll.typeSorting = sortingStatus.value;
-        // console.log('sortingStatus', sortingStatus.value)
         const productsOnPageArray = this.view.getProductsOnPage();
         this.model.sorting(productsOnPageArray, sortingStatus.value)
     }
@@ -89,7 +85,6 @@ export class Controller {
     getFilterData(data: arrayProducts) {
         //фильт по избранному
         if (this.filterAll.favorit) data = data?.filter(itemData => itemData.favorit === this.filterAll.favorit);
-
         //фильт по объектам
         if (this.filterAll.placeVizitId !== '') {
             data = data?.filter(itemData => {
