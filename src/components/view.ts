@@ -43,7 +43,7 @@ export class Products {
         return productsOnPageArray;
     }
     getLocalStorage(allFilter: Ifilter) {
-        console.log('отрисовка на странице', allFilter)
+        //console.log('отрисовка на странице', allFilter)
         //элементы в корзине
         const cart = (document.querySelector('.cart__number') as HTMLElement)
         if (allFilter.productInCart === '') cart.textContent = `0`
