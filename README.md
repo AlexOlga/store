@@ -1,6 +1,7 @@
 # store
 Deploy:
 https://rolling-scopes-school.github.io/alexolga-JSFE2022Q1/online-store/
+
 https://AlexOlga.github.io/store/
 
 Приложение написано на TypeScript, 
